@@ -1,13 +1,14 @@
 // 引入gulp
 const gulp = require('gulp')
 const concat = require('gulp-concat')
-const uglify = require('gulp-uglify')
+// const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const less = require('gulp-less')
 const cleanCss = require('gulp-clean-css')
 var htmlmin = require('gulp-htmlmin')
 const connect = require('gulp-connect')
 const open = require('open')
+const $ = require('gulp-load-plugins')()
 
 //压缩html任务
 gulp.task('htmlTask', function() {
@@ -45,7 +46,7 @@ gulp.task('jsTask', function () {
     .pipe(concat('built.js', {newLine: ';'}))
     .pipe(gulp.dest('dist/js'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
+    .pipe($.uglify())
     .pipe(gulp.dest('dist/js'))
     .pipe(connect.reload())
 })
