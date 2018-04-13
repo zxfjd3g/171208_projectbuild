@@ -7,7 +7,7 @@ import './assets/css/style.css'// 引入css模块
 import lessons from './assets/json/lessons.json'// 引入json模块
 
 // import {studyConfirm, goAtguigu} from './js/atguigu'
-import * as atguigu from './js/atguigu'
+// import * as atguigu from './js/atguigu'
 
 
 $(() => {
@@ -20,8 +20,11 @@ $(() => {
   $ul.appendTo('#app')
 
   $('<button>去尚硅谷吗?</button>').appendTo('#app').click(() => {
-    if(atguigu.studyConfirm()) {
-      atguigu.goAtguigu()
-    }
+    // 单独打包
+    import('./js/atguigu').then(atguigu => {
+      if(atguigu.studyConfirm()) {
+        atguigu.goAtguigu()
+      }
+    })
   })
 })

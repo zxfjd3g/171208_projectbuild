@@ -1,7 +1,9 @@
 /*
 webpack基础配置
  */
-import path from 'path'
+// import path from 'path'
+const path = require('path')
+const HtmlPlugin = require('html-webpack-plugin')
 
 // __dirname: 当前文件所在目录的绝对路径: build的路径
 function resolve(dir) {
@@ -10,7 +12,10 @@ function resolve(dir) {
 
 module.exports = {
   // 入口
-  entry: "src/main.js", // 相对于命令所有目录
+  entry: {
+    app: './src/main.js',
+    // other: './src/other.js'
+  }, // 相对于命令所有目录
   // 出口
   output: {
     path: resolve('dist')  // 所有打包生成的文件的基础目录
@@ -29,7 +34,7 @@ module.exports = {
         test: /\.(jpg|png|svg|gif)$/,
         loader: 'url-loader',  // 包装扩展file-loader
         options: {
-          limit: 1020*170, // 进行图片base64编码处理的文件最大值
+          limit: 1020*100, // 进行图片base64编码处理的文件最大值
           name: 'static/img/[name].[hash:8].[ext]' // 生成的文件路径和文件名
         }
       }
