@@ -1,14 +1,14 @@
 /*
 入口js
  */
-import $ from 'jquery '// 引入第三方js模块
+import $ from 'jquery'// 引入第三方js模块
 import {cube} from './js/math' // 引入自定义js模块
 import './assets/css/style.css'// 引入css模块
 import lessons from './assets/json/lessons.json'// 引入json模块
 
 
 $(() => {
-  console.log(cube(3))
+  console.log(cube(2))
 
   const $ul = $('<ul>')
   lessons.forEach(lesson => {
